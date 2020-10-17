@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ResumereplyMapper">
+   <resultMap id="BaseResultMap" type="com.entity.Resumereply">
+    <id column="enid" jdbcType="INTEGER" property="enid" />
+    <result column="enname" jdbcType="VARCHAR" property="enname" />
+     <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
+  </resultMap>
+  <sql id="Base_Column_List">
+     enid, enname,uid, message
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from resumereply
+    where enid = #{enid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from resumereply
+    where enid = #{enid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.entity.Resumereply">
+    insert into resumereply (enid, enname,uid, message
+      )
+    values (#{enid,jdbcType=INTEGER}, #{enname,jdbcType=VARCHAR},#{uid,jdbcType=INTEGER}, #{message,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.entity.Resumereply">
+    update resumereply
+    set enname = #{enname,jdbcType=VARCHAR},
+       enid = #{enid,jdbcType=INTEGER},
+      message = #{message,jdbcType=VARCHAR}
+    where enid = #{enid,jdbcType=INTEGER}
+  </update>
+</mapper>

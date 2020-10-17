@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.UserDetailMapper">
+  <resultMap id="BaseResultMap" type="com.entity.UserDetail">
+    <id column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="realname" jdbcType="VARCHAR" property="realname" />
+    <result column="age" jdbcType="VARCHAR" property="age" />
+    <result column="gender" jdbcType="VARCHAR" property="gender" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="qq" jdbcType="VARCHAR" property="qq" />
+    <result column="major" jdbcType="VARCHAR" property="major" />
+    <result column="classname" jdbcType="VARCHAR" property="classname" />
+    <result column="edubackground" jdbcType="VARCHAR" property="edubackground" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    uid, realname,age,gender,email,phone,qq,major,classname,edubackground
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from userdetail
+    where uid = #{uid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from userdetail
+    where uid = #{uid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.entity.UserDetail">
+    insert into userdetail (uid, realname, age, gender, email, phone, qq, major, classname, edubackground)
+    values (#{uid,jdbcType=INTEGER}, #{realname,jdbcType=VARCHAR}, #{age,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}
+    , #{phone,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{major,jdbcType=VARCHAR}, #{classname,jdbcType=VARCHAR}, #{edubackground,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insert2" parameterType="com.entity.UserDetail">
+    insert into userdetail (uid, realname, age, gender, email, phone, qq, major, classname, edubackground)
+    values (#{uid,jdbcType=INTEGER}, #{realname,jdbcType=VARCHAR}, #{age,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}
+    , #{phone,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{major,jdbcType=VARCHAR}, #{classname,jdbcType=VARCHAR}, #{edubackground,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.entity.UserDetail">
+    insert into userdetail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="realname != null">
+        realname,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="qq != null">
+        qq,
+      </if>
+      <if test="major != null">
+        major,
+      </if>
+      <if test="classname != null">
+        classname,
+      </if>
+      <if test="edubackground != null">
+        edubackground,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="realname != null">
+        #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null">
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null">
+        #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="classname != null">
+        #{classname,jdbcType=VARCHAR},
+      </if>
+      <if test="edubackground != null">
+        #{edubackground,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.entity.UserDetail">
+    update userdetail
+    <set>
+      <if test="realname != null">
+        #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null">
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null">
+        #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="classname != null">
+        #{classname,jdbcType=VARCHAR},
+      </if>
+      <if test="edubackground != null">
+        #{edubackground,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where uid = #{uid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.entity.UserDetail">
+    update userdetail
+    set realname=#{realname,jdbcType=VARCHAR}, age=#{age,jdbcType=VARCHAR}, gender=#{gender,jdbcType=VARCHAR}, email=#{email,jdbcType=VARCHAR}
+    , phone=#{phone,jdbcType=VARCHAR}, qq=#{qq,jdbcType=VARCHAR}, major=#{major,jdbcType=VARCHAR}, classname=#{classname,jdbcType=VARCHAR},edubackground= #{edubackground,jdbcType=VARCHAR}
+    where uid = #{uid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.EtuserMapper">
+  <resultMap id="BaseResultMap" type="com.entity.Etuser">
+    <id column="bid" jdbcType="INTEGER" property="bid" />
+    <result column="bpwd" jdbcType="VARCHAR" property="bpwd" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    bid, bpwd
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from enterpriseuser
+    where bid = #{bid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from enterpriseuser
+    where bid = #{bid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.entity.Etuser">
+    insert into enterpriseuser (bid, bpwd)
+    values (#{bid,jdbcType=INTEGER}, #{bpwd,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.entity.Etuser">
+    insert into enterpriseuser
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bid != null">
+        bid,
+      </if>
+      <if test="bpwd != null">
+        bpwd,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bid != null">
+        #{bid,jdbcType=INTEGER},
+      </if>
+      <if test="bpwd != null">
+        #{bpwd,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.entity.Etuser">
+    update enterpriseuser
+    <set>
+      <if test="bpwd != null">
+        bpwd = #{bpwd,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where bid = #{bid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.entity.Etuser">
+    update enterpriseuser
+    set bpwd = #{bpwd,jdbcType=VARCHAR}
+    where bid = #{bid,jdbcType=INTEGER}
+  </update>
+</mapper>

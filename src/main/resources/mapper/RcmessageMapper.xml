@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.RcmessageMapper">
+  <resultMap id="BaseResultMap" type="com.entity.Rcmessage">
+    <id column="rmid" jdbcType="INTEGER" property="rmid" />
+    <result column="enid" jdbcType="INTEGER" property="enid" />
+    <result column="enname" jdbcType="VARCHAR" property="enname" />
+    <result column="wtype" jdbcType="VARCHAR" property="wtype" />
+    <result column="work" jdbcType="VARCHAR" property="work" />
+    <result column="minmoney" jdbcType="INTEGER" property="minmoney" />
+    <result column="maxmoney" jdbcType="INTEGER" property="maxmoney" />
+    <result column="workcity" jdbcType="VARCHAR" property="workcity" />
+    <result column="experience" jdbcType="VARCHAR" property="experience" />
+    <result column="education" jdbcType="VARCHAR" property="education" />
+    <result column="moremessage" jdbcType="VARCHAR" property="moremessage" />
+    <result column="workaddress" jdbcType="VARCHAR" property="workaddress" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    rmid, enid, enname, wtype, work, minmoney, maxmoney, workcity, experience, education, 
+    moremessage, workaddress
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from recruitmentmessage
+    where rmid = #{rmid,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByEnid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from recruitmentmessage
+    where enid = #{enid,jdbcType=INTEGER}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from recruitmentmessage
+    where rmid = #{rmid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.entity.Rcmessage">
+    insert into recruitmentmessage (rmid, enid, enname, 
+      wtype, work, minmoney, 
+      maxmoney, workcity, experience, 
+      education, moremessage, workaddress
+      )
+    values (#{rmid,jdbcType=INTEGER}, #{enid,jdbcType=INTEGER}, #{enname,jdbcType=VARCHAR}, 
+      #{wtype,jdbcType=VARCHAR}, #{work,jdbcType=VARCHAR}, #{minmoney,jdbcType=INTEGER}, 
+      #{maxmoney,jdbcType=INTEGER}, #{workcity,jdbcType=VARCHAR}, #{experience,jdbcType=VARCHAR}, 
+      #{education,jdbcType=VARCHAR}, #{moremessage,jdbcType=VARCHAR}, #{workaddress,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.entity.Rcmessage">
+    insert into recruitmentmessage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rmid != null">
+        rmid,
+      </if>
+      <if test="enid != null">
+        enid,
+      </if>
+      <if test="enname != null">
+        enname,
+      </if>
+      <if test="wtype != null">
+        wtype,
+      </if>
+      <if test="work != null">
+        work,
+      </if>
+      <if test="minmoney != null">
+        minmoney,
+      </if>
+      <if test="maxmoney != null">
+        maxmoney,
+      </if>
+      <if test="workcity != null">
+        workcity,
+      </if>
+      <if test="experience != null">
+        experience,
+      </if>
+      <if test="education != null">
+        education,
+      </if>
+      <if test="moremessage != null">
+        moremessage,
+      </if>
+      <if test="workaddress != null">
+        workaddress,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rmid != null">
+        #{rmid,jdbcType=INTEGER},
+      </if>
+      <if test="enid != null">
+        #{enid,jdbcType=INTEGER},
+      </if>
+      <if test="enname != null">
+        #{enname,jdbcType=VARCHAR},
+      </if>
+      <if test="wtype != null">
+        #{wtype,jdbcType=VARCHAR},
+      </if>
+      <if test="work != null">
+        #{work,jdbcType=VARCHAR},
+      </if>
+      <if test="minmoney != null">
+        #{minmoney,jdbcType=INTEGER},
+      </if>
+      <if test="maxmoney != null">
+        #{maxmoney,jdbcType=INTEGER},
+      </if>
+      <if test="workcity != null">
+        #{workcity,jdbcType=VARCHAR},
+      </if>
+      <if test="experience != null">
+        #{experience,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="moremessage != null">
+        #{moremessage,jdbcType=VARCHAR},
+      </if>
+      <if test="workaddress != null">
+        #{workaddress,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.entity.Rcmessage">
+    update recruitmentmessage
+    <set>
+      <if test="enid != null">
+        enid = #{enid,jdbcType=INTEGER},
+      </if>
+      <if test="enname != null">
+        enname = #{enname,jdbcType=VARCHAR},
+      </if>
+      <if test="wtype != null">
+        wtype = #{wtype,jdbcType=VARCHAR},
+      </if>
+      <if test="work != null">
+        work = #{work,jdbcType=VARCHAR},
+      </if>
+      <if test="minmoney != null">
+        minmoney = #{minmoney,jdbcType=INTEGER},
+      </if>
+      <if test="maxmoney != null">
+        maxmoney = #{maxmoney,jdbcType=INTEGER},
+      </if>
+      <if test="workcity != null">
+        workcity = #{workcity,jdbcType=VARCHAR},
+      </if>
+      <if test="experience != null">
+        experience = #{experience,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        education = #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="moremessage != null">
+        moremessage = #{moremessage,jdbcType=VARCHAR},
+      </if>
+      <if test="workaddress != null">
+        workaddress = #{workaddress,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where rmid = #{rmid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.entity.Rcmessage">
+    update recruitmentmessage
+    set enid = #{enid,jdbcType=INTEGER},
+      enname = #{enname,jdbcType=VARCHAR},
+      wtype = #{wtype,jdbcType=VARCHAR},
+      work = #{work,jdbcType=VARCHAR},
+      minmoney = #{minmoney,jdbcType=INTEGER},
+      maxmoney = #{maxmoney,jdbcType=INTEGER},
+      workcity = #{workcity,jdbcType=VARCHAR},
+      experience = #{experience,jdbcType=VARCHAR},
+      education = #{education,jdbcType=VARCHAR},
+      moremessage = #{moremessage,jdbcType=VARCHAR},
+      workaddress = #{workaddress,jdbcType=VARCHAR}
+    where rmid = #{rmid,jdbcType=INTEGER}
+  </update>
+</mapper>
